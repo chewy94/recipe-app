@@ -5,13 +5,15 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.css'
 
+import axios from 'axios'
+
 import App from './App'
 import router from './router'
 
 Vue.use(Vuetify, { theme: {
-  primary: '#ee44aa',
-  secondary: '#424242',
-  accent: '#82B1FF',
+  primary: '#64b5f6',
+  secondary: '#ce93d8',
+  accent: '#ff5722',
   error: '#FF5252',
   info: '#2196F3',
   success: '#4CAF50',
@@ -19,6 +21,7 @@ Vue.use(Vuetify, { theme: {
 }})
 
 Vue.config.productionTip = false
+Vue.prototype.$http = axios
 
 /* eslint-disable no-new */
 new Vue({
