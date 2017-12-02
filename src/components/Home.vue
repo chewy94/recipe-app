@@ -8,28 +8,27 @@
   </v-parallax>
   <v-layout row class="mt-4">
     <v-flex xs12 sm8 offset-sm2>
-      <v-card flat class="card--flex-toolbar">
-        <v-toolbar card prominent>
-          <v-toolbar-title class="body-2 mr-3">Filter by type:</v-toolbar-title>
-          <v-select
-            :items="categories"
-            v-model="filters"
-            label="Select Food Categories"
-            prepend-icon='local_dining'
-            hide-selected
-            chips
-            multiple
-            deletable-chips
-            solo
-            autocomplete
-          ></v-select>
-        </v-toolbar>
-      </v-card>
+      <v-toolbar card prominent color="transparent">
+        <v-toolbar-title class="body-2 mr-3">Filter by type:</v-toolbar-title>
+        <v-select
+          @input="updateSelectedCategories($event)"
+          :items="categories"
+          v-model="filters"
+          label="Select Food Types"
+          prepend-icon='local_dining'
+          hide-selected
+          chips
+          multiple
+          deletable-chips
+          solo
+          autocomplete
+        ></v-select>
+      </v-toolbar>
     </v-flex>
   </v-layout>
   <v-layout row wrap class="mt-4" justify-center>
-    <v-flex xs12 sm4 md2 v-for="recipe in recipies" :key="recipe.id" class="ma-4">
-      <v-card flat hover>
+    <v-flex xs12 sm4 lg2 v-for="recipe in recipies" :key="recipe.id" class="ma-4">
+      <v-card flat hover :to="'/recipe/' + recipe.id">
         <v-card-media
           height="200px"
           :src="recipe.image"
@@ -37,7 +36,7 @@
         </v-card-media>
         <v-card-title>
           <div>
-            <span><v-chip label outline color="primary" class="rotate">{{ recipe.category }}</v-chip></span><br/>
+            <span><v-chip label outline color="primary" class="category-ani">{{ recipe.category }}</v-chip></span><br/>
             <span class="headline">{{ recipe.title }}</span><br/>
             <span>{{ recipe.description }}</span>
           </div>
@@ -55,42 +54,20 @@ export default {
     return {
       hovered: false,
       filters: null,
-      recipies: [
-        {
-          id: 1,
-          title: 'Test Recipe Card 1',
-          description: 'Test recipe description',
-          category: 'Chicken',
-          image: '/static/food/dish1.jpg'
-        },
-        {
-          id: 2,
-          title: 'Test Recipe Card 2',
-          description: 'Test recipe description',
-          category: 'Beef',
-          image: '/static/food/dish1.jpg'
-        },
-        {
-          id: 3,
-          title: 'Test Recipe Card 3',
-          description: 'Test recipe description',
-          category: 'Veggies',
-          image: '/static/food/dish1.jpg'
-        },
-        {
-          id: 4,
-          title: 'Test Recipe Card 4',
-          description: 'Test recipe description',
-          category: 'Pasta',
-          image: '/static/food/dish1.jpg'
-        }
-      ],
-      categories: [ 'Chicken', 'Beef', 'Veggies', 'Pasta' ]
+      categories: this.$store.state.categories
     }
   },
   methods: {
-    test: function () {
-      console.log('hovered')
+    test (event) {
+      console.log(event)
+    },
+    updateSelectedCategories (event) {
+      this.$store.dispatch('updateSelectedCategories', event)
+    }
+  },
+  computed: {
+    recipies () {
+      return this.$store.getters.filteredRecipies
     }
   }
 }
@@ -116,7 +93,25 @@ export default {
     }
   }
 
-  .rotate:hover {
+  .category-ani:hover {
     animation: jiggle .5s;
+  }
+
+  .recipe-enter-active {
+    transition: all 300ms ease-out;
+  }
+
+  .recipe-leave-active {
+    transition: all 200ms ease-in;
+    position: absolute;
+    z-index: 0;
+  }
+
+  .recipe-enter, .recipe-leave-to {
+    opacity: 0;
+  }
+
+  .recipe-enter {
+    transform: scale(0.9)
   }
 </style>

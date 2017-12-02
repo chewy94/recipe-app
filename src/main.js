@@ -9,6 +9,7 @@ import axios from 'axios'
 
 import App from './App'
 import router from './router'
+import { store } from './store'
 
 Vue.use(Vuetify, { theme: {
   primary: '#64b5f6',
@@ -27,6 +28,10 @@ Vue.prototype.$http = axios
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  created () {
+    console.log(this.$store)
+  }
 })
