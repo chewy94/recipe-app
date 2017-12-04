@@ -42,29 +42,29 @@ export const store = new Vuex.Store({
         image: '/static/food/dish1.jpg'
       },
       {
-        id: 1,
-        title: 'Test Recipe Card 1',
+        id: 5,
+        title: 'Test Recipe Card 5',
         description: 'Test recipe description',
         category: 'Chicken',
         image: '/static/food/dish1.jpg'
       },
       {
-        id: 2,
-        title: 'Test Recipe Card 2',
+        id: 6,
+        title: 'Test Recipe Card 6',
         description: 'Test recipe description',
         category: 'Beef',
         image: '/static/food/dish1.jpg'
       },
       {
-        id: 3,
-        title: 'Test Recipe Card 3',
+        id: 7,
+        title: 'Test Recipe Card 7',
         description: 'Test recipe description',
         category: 'Veggies',
         image: '/static/food/dish1.jpg'
       },
       {
-        id: 4,
-        title: 'Test Recipe Card 4',
+        id: 8,
+        title: 'Test Recipe Card 8',
         description: 'Test recipe description',
         category: 'Pasta',
         image: '/static/food/dish1.jpg'
