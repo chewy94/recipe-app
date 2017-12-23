@@ -2,7 +2,7 @@
   <div>
     <v-parallax src="/static/backgrounds/food1.jpg" height="300">
     <v-layout column align-center justify-center>
-      <h1>Recipe App</h1>
+      <h1>What's for Dinner?</h1>
       <h4>A place for yummy things</h4>
     </v-layout>
   </v-parallax>
@@ -38,7 +38,7 @@
           <div>
             <span><v-chip label outline color="primary" class="category-ani">{{ recipe.category }}</v-chip></span><br/>
             <span class="headline">{{ recipe.title }}</span><br/>
-            <span>{{ recipe.description }}</span>
+            <span>{{ recipe.smallDescription }}</span>
           </div>
         </v-card-title>
       </v-card>

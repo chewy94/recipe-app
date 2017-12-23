@@ -55,7 +55,7 @@
           title: 'Inspire'
         }],
         miniVariant: false,
-        title: 'Recipe App'
+        title: `What's for Dinner?`
       }
     }
   }
