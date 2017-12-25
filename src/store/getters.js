@@ -16,3 +16,11 @@ export const findRecipe = (state) => (id) => {
     return obj.id === id
   })
 }
+
+export const loading = (state) => {
+  return state.isLoading
+}
+
+export const error = (state) => {
+  return state.error
+}

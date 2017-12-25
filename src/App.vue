@@ -2,7 +2,7 @@
   <v-app light>
     <v-navigation-drawer
       fixed
-      :mini-variant="miniVariant"
+      temporary
       :clipped="clipped"
       v-model="drawer"
       app
@@ -12,6 +12,7 @@
           v-for="(item, i) in items"
           :key="i"
           value="true"
+          :to="item.route"
         >
           <v-list-tile-action>
             <v-icon light v-html="item.icon"></v-icon>
@@ -23,14 +24,15 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar app class="primary">
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
       <v-toolbar-title v-text="title"></v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn flat v-for="item in items" :key="item.title" :to="item.route">
+          <v-icon left>{{ item.icon }}</v-icon>
+          {{ item.title }}
+        </v-btn>
+      </v-toolbar-items>
     </v-toolbar>
     <v-content>
       <v-container fluid>
@@ -48,13 +50,12 @@
   export default {
     data () {
       return {
-        clipped: false,
+        clipped: true,
         drawer: false,
-        items: [{
-          icon: 'bubble_chart',
-          title: 'Inspire'
-        }],
-        miniVariant: false,
+        items: [
+          { icon: 'home', title: 'Home', route: '/' },
+          { icon: 'lock', title: 'Login', route: '/login' }
+        ],
         title: `What's for Dinner?`
       }
     }

@@ -10,6 +10,8 @@ const debug = process.env.NODE_ENV !== 'production'
 
 export const store = new Vuex.Store({
   state: {
+    isLoading: false,
+    error: null,
     categories: [ 'Chicken', 'Beef', 'Veggies', 'Pasta' ],
     selectedCategories: [],
     recipies: [

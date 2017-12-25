@@ -5,7 +5,9 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.css'
 
+import Alert from '@/components/Shared/Alert'
 import axios from 'axios'
+import * as firebase from 'firebase'
 
 import App from './App'
 import router from './router'
@@ -24,6 +26,8 @@ Vue.use(Vuetify, { theme: {
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
 
+Vue.component('alert', Alert)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -32,6 +36,14 @@ new Vue({
   template: '<App/>',
   components: { App },
   created () {
-    console.log(this.$store)
+    var config = {
+      apiKey: 'AIzaSyDHgr4iO_rSQQtgplXqlBdG5hrQ72k09qM',
+      authDomain: 'yummy-things.firebaseapp.com',
+      databaseURL: 'https://yummy-things.firebaseio.com',
+      projectId: 'yummy-things',
+      storageBucket: 'yummy-things.appspot.com',
+      messagingSenderId: '153314814395'
+    }
+    firebase.initializeApp(config)
   }
 })

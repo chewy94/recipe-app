@@ -1,4 +1,5 @@
 .DS_Store
+.nvmrc
 node_modules/
 dist/
 npm-debug.log*
