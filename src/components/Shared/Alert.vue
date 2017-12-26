@@ -18,5 +18,6 @@ export default {
 <style scoped>
 .alert {
   margin-top: 0;
+  position: fixed;
 }
 </style>

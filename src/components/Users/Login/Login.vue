@@ -58,8 +58,8 @@
 </template>
 
 <script>
-  import SignIn from '@/components/Users/Forms/SignIn'
-  import SignUp from '@/components/Users/Forms/SignUp'
+  import SignIn from '@/components/Users/Login/Forms/SignIn'
+  import SignUp from '@/components/Users/Login/Forms/SignUp'
   export default {
     components: {
       'sign-in': SignIn,
