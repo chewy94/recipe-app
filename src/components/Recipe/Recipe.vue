@@ -15,8 +15,8 @@
       <v-card>
         <v-card-title class="headline">Ingredients</v-card-title>
         <v-list twoLine>
-          <template v-for="item in recipe.ingredients">
-            <v-subheader :key="item.category">{{ item.category }}</v-subheader>
+          <template v-for="(item,i) in recipe.ingredients">
+            <v-subheader :key="i">{{ item.category }}</v-subheader>
             <v-list-tile v-for="subItem in item.items" :key="subItem.name">
               <v-flex xs10 offset-xs1>
                 <v-list-tile-content>
@@ -56,9 +56,9 @@
             </v-card>
             <v-card flat v-else-if="tab.toLowerCase() === 'directions'">
               <v-list>
-                <template v-for="item in recipe.directions">
+                <template v-for="(item,i) in recipe.directions">
                   <v-subheader :key="item.step">Step {{ item.step }}</v-subheader>
-                  <v-list-tile :key="item.step">
+                  <v-list-tile :key="i+1000">
                     <v-list-tile-content>
                       <v-list-tile-title>{{ item.content }}</v-list-tile-title>
                     </v-list-tile-content>

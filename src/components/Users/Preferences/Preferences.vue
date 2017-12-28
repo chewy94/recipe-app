@@ -15,16 +15,20 @@
               </v-card-text>
             </v-flex>
             <v-flex xs10 offset-xs1 align-center justify-center layout>
-              <v-avatar size="150px">
+              <div>
                 <v-btn
                   class="upload-button"
                   color="primary"
                   small
                   absolute
+                  top
+                  right
                   fab
                 >
                   <v-icon>file_upload</v-icon>
                 </v-btn>
+              </div>
+              <v-avatar size="150px">
                 <img :src="imageUploaded ? profileImage : '/static/defaultProfile.png'" alt="Profile image">
               </v-avatar>
             </v-flex>
@@ -67,7 +71,6 @@ export default {
 
 <style scoped>
 .upload-button {
-  left: 275px;
-  bottom: 175px;
+  /* position: fixed; */
 }
 </style>
