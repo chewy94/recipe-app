@@ -15,7 +15,7 @@
               </v-card-text>
             </v-flex>
             <v-flex xs10 offset-xs1 align-center justify-center layout>
-              <div>
+              <div class="file-upload">
                 <v-btn
                   class="upload-button"
                   color="primary"
@@ -70,6 +70,11 @@ export default {
 </script>
 
 <style scoped>
+.file-upload {
+  position: absolute;
+  width: 175px;
+  height: 120px;
+}
 .upload-button {
   /* position: fixed; */
 }
