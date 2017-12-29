@@ -19,6 +19,7 @@
                 <v-btn
                   class="upload-button"
                   color="primary"
+                  @click="uploadProfile"
                   small
                   absolute
                   top
@@ -27,9 +28,10 @@
                 >
                   <v-icon>file_upload</v-icon>
                 </v-btn>
+                <input type="file" ref="uploadProfileButton" accept="image/*" @change="profileUploaded" hidden>
               </div>
               <v-avatar size="150px">
-                <img :src="imageUploaded ? profileImage : '/static/defaultProfile.png'" alt="Profile image">
+                <img class="grey lighten-4 profile-image" :src="imageUploaded ? profileImageUrl : '/static/defaultProfile.png'" alt="Profile image">
               </v-avatar>
             </v-flex>
             <v-flex xs12 offset-xs1>
@@ -47,6 +49,24 @@
                 <img src="/static/logo.svg" alt="Company logo">
               </v-avatar>
             </v-flex>
+            <v-flex xs12 offset-xs1>
+              <v-tabs v-model="activeTab">
+                <v-tabs-items>
+                  <v-tabs-content
+                    v-for="preference in preferences"
+                    :key="preference"
+                    :id="preference"
+                  >
+                    <v-text-field
+                      :name="preference"
+                      :label="preference"
+                      :id="preference"
+                    ></v-text-field>
+                  </v-tabs-content>
+                </v-tabs-items>
+              </v-tabs>
+              <v-btn @click="activeTab = 'diet'">Test</v-btn>
+            </v-flex>
           </v-flex>
         </v-layout>
       </v-card>
@@ -58,12 +78,36 @@
 export default {
   data () {
     return {
-      imageUploaded: false
+      imageUploaded: false,
+      profileImage: null,
+      profileImageUrl: null,
+      activeTab: 'name',
+      preferences: ['name', 'diet', 'age', 'favorites']
     }
   },
   computed: {
     error () {
       return this.$store.getters.error
+    }
+  },
+  methods: {
+    uploadProfile () {
+      this.$refs.uploadProfileButton.click()
+    },
+    profileUploaded (event) {
+      const files = event.target.files
+      let fileName = files[0].name
+      if (fileName.lastIndexOf('.') <= 0) {
+        console.log('Invalid file type uploaded')
+        return
+      }
+      const fileReader = new FileReader()
+      fileReader.addEventListener('load', () => {
+        this.profileImageUrl = fileReader.result
+        this.imageUploaded = true
+      })
+      fileReader.readAsDataURL(files[0])
+      this.profileImage = files[0]
     }
   }
 }
@@ -74,5 +118,9 @@ export default {
   position: absolute;
   width: 175px;
   height: 120px;
+}
+
+.profile-image {
+  object-fit: cover;
 }
 </style>
