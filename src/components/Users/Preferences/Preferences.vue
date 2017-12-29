@@ -49,23 +49,8 @@
                 <img src="/static/logo.svg" alt="Company logo">
               </v-avatar>
             </v-flex>
-            <v-flex xs12 offset-xs1>
-              <v-tabs v-model="activeTab">
-                <v-tabs-items>
-                  <v-tabs-content
-                    v-for="preference in preferences"
-                    :key="preference"
-                    :id="preference"
-                  >
-                    <v-text-field
-                      :name="preference"
-                      :label="preference"
-                      :id="preference"
-                    ></v-text-field>
-                  </v-tabs-content>
-                </v-tabs-items>
-              </v-tabs>
-              <v-btn @click="activeTab = 'diet'">Test</v-btn>
+            <v-flex xs12>
+              <preference-form></preference-form>
             </v-flex>
           </v-flex>
         </v-layout>
@@ -75,7 +60,11 @@
 </template>
 
 <script>
+import PreferenceForm from './Forms/PreferenceForm'
 export default {
+  components: {
+    'preference-form': PreferenceForm
+  },
   data () {
     return {
       imageUploaded: false,
