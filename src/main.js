@@ -7,7 +7,6 @@ import 'vuetify/dist/vuetify.css'
 
 import Alert from '@/components/Shared/Alert'
 import axios from 'axios'
-import * as firebase from 'firebase'
 
 import App from './App'
 import router from './router'
@@ -34,16 +33,16 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  components: { App },
-  created () {
-    var config = {
-      apiKey: 'AIzaSyDHgr4iO_rSQQtgplXqlBdG5hrQ72k09qM',
-      authDomain: 'yummy-things.firebaseapp.com',
-      databaseURL: 'https://yummy-things.firebaseio.com',
-      projectId: 'yummy-things',
-      storageBucket: 'yummy-things.appspot.com',
-      messagingSenderId: '153314814395'
-    }
-    firebase.initializeApp(config)
-  }
+  components: { App }
+  // created () {
+  //   var config = {
+  //     apiKey: 'AIzaSyDHgr4iO_rSQQtgplXqlBdG5hrQ72k09qM',
+  //     authDomain: 'yummy-things.firebaseapp.com',
+  //     databaseURL: 'https://yummy-things.firebaseio.com',
+  //     projectId: 'yummy-things',
+  //     storageBucket: 'yummy-things.appspot.com',
+  //     messagingSenderId: '153314814395'
+  //   }
+  //   firebase.initializeApp(config)
+  // }
 })

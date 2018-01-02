@@ -20,4 +20,16 @@ export default {
   margin-top: 0;
   position: fixed;
 }
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+  .alert {
+    width: 48%;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .alert {
+    width: 32.5%;
+  }
+}
 </style>

@@ -13,3 +13,7 @@ export const setError = (state, payload) => {
 export const clearError = (state) => {
   state.error = null
 }
+
+export const setUser = (state, payload) => {
+  state.user = payload
+}

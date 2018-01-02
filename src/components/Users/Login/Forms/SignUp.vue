@@ -21,6 +21,7 @@
             :type="!passVisible ? 'password' : 'text'"
             required
             @keyup.enter="submit"
+            autocomplete="new-password"
           >
           </v-text-field>
           <v-text-field
@@ -81,6 +82,8 @@ export default {
         this.$store.dispatch('createUser', {
           email: this.email,
           password: this.password
+        }).then(() => {
+          this.$router.push('preferences')
         })
       }
     }

@@ -12,6 +12,7 @@ export const store = new Vuex.Store({
   state: {
     isLoading: false,
     error: null,
+    user: null,
     categories: [ 'Chicken', 'Beef', 'Veggies', 'Pasta' ],
     selectedCategories: [],
     recipies: [
