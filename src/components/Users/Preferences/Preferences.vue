@@ -11,7 +11,7 @@
             </v-flex>
             <v-flex xs10 offset-xs1>
               <v-card-text class="text-xs-center">
-                <span class="headline">Awesome! Thanks for joining our family.</span>
+                <span class="headline">Awesome! Thanks for joining our family!</span>
               </v-card-text>
             </v-flex>
             <v-flex xs10 offset-xs1 align-center justify-center layout>
